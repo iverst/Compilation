@@ -4,23 +4,27 @@ import java.util.Scanner;
 
 public class AnalyseurLexical {
     private Compilateur compilateur;
-
+    private char[] chars;
     public AnalyseurLexical(Compilateur compilateur) {
         this.compilateur = compilateur;
     }
 
-    public void analyser() {
+    public void analyser(String data) {
+        this.chars = data.toCharArray();
+        while (LIRE_CHAR()) {
 
+        }
     }
 
-    private void LIRE_CHAR() {
-        File file = new File(Compilateur.SOURCE);
-        try {
-            String content = new Scanner(new File(Compilateur.SOURCE)).useDelimiter("\\Z").next();
-            System.out.println(content);
+    private boolean LIRE_CHAR() {
+        if (Compilateur.NUM_LIGNE < chars.length) {
+            Compilateur.CARLU = chars[Compilateur.NUM_LIGNE];
+            Compilateur.NUM_LIGNE++;
+            return true;
         }
-        catch (Exception e ) {
-            e.printStackTrace();
+        else {
+            System.out.println(new Erreur(1, "fin de fichier atteinte").afficherErreur());
+            return false;
         }
     }
 }

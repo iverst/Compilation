@@ -11,11 +11,13 @@ public class Compilateur {
     public static String CHAINE;
     public static int NUM_LIGNE;
     public static String[] TABLE_MOTS_RESERVES = new String[NB_MOTS_RESERVES];
+    private String data;
 
     public void compiler(){
         AnalyseurLexical analyseurLexical = new AnalyseurLexical(this);
-        analyseurLexical.analyser();
-        lireFichier(SOURCE);
+        data = lireFichier(SOURCE);
+        analyseurLexical.analyser(data);
+
     }
 
     public String lireFichier(String filePath) {
