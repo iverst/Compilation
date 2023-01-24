@@ -1,7 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="08fd16ac-ad2a-4918-b89f-20d5077ad8b7" name="Default Changelist" comment="" />
+    <list default="true" id="08fd16ac-ad2a-4918-b89f-20d5077ad8b7" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/code/test.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/AnalyseurLexical.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/AnalyseurSemantique.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/AnalyseurSyntaxique.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Compilateur.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Erreur.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/T_UNILEX.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Test.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -11,6 +24,11 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="ProjectId" id="2KmBrtNH1QHqg1cQzKoICpIq119" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showExcludedFiles" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
   </component>
@@ -40,5 +58,23 @@
       <updated>1674570079091</updated>
     </task>
     <servers />
+  </component>
+  <component name="WindowStateProjectService">
+    <state width="1238" height="212" key="GridCell.Tab.0.bottom" timestamp="1674570826912">
+      <screen x="0" y="0" width="1280" height="800" />
+    </state>
+    <state width="1238" height="212" key="GridCell.Tab.0.bottom/0.0.1280.800@0.0.1280.800" timestamp="1674570826912" />
+    <state width="1238" height="212" key="GridCell.Tab.0.center" timestamp="1674570826910">
+      <screen x="0" y="0" width="1280" height="800" />
+    </state>
+    <state width="1238" height="212" key="GridCell.Tab.0.center/0.0.1280.800@0.0.1280.800" timestamp="1674570826910" />
+    <state width="1238" height="212" key="GridCell.Tab.0.left" timestamp="1674570826909">
+      <screen x="0" y="0" width="1280" height="800" />
+    </state>
+    <state width="1238" height="212" key="GridCell.Tab.0.left/0.0.1280.800@0.0.1280.800" timestamp="1674570826909" />
+    <state width="1238" height="212" key="GridCell.Tab.0.right" timestamp="1674570826911">
+      <screen x="0" y="0" width="1280" height="800" />
+    </state>
+    <state width="1238" height="212" key="GridCell.Tab.0.right/0.0.1280.800@0.0.1280.800" timestamp="1674570826911" />
   </component>
 </project>
