@@ -16,6 +16,7 @@ public class AnalyseurLexical {
         }
     }
 
+    ////////////////////////////////////////////////////////////////////////////////////////////////////
     private boolean LIRE_CHAR() {
         if (Compilateur.NUM_LIGNE < chars.length) {
             Compilateur.CARLU = chars[Compilateur.NUM_LIGNE];
@@ -26,5 +27,9 @@ public class AnalyseurLexical {
             System.out.println(new Erreur(1, "fin de fichier atteinte").afficherErreur());
             return false;
         }
+    }
+    ////////////////////////////////////////////////////////////////////////////////////////////////////
+    private void SAUTER_SEPARATEURS() {
+
     }
 }

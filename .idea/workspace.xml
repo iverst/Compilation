@@ -2,17 +2,21 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="08fd16ac-ad2a-4918-b89f-20d5077ad8b7" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/AnalyseurLexical.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/AnalyseurLexical.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Compilateur.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Compilateur.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Erreur.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Erreur.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Test.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Test.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -25,13 +29,14 @@
   </component>
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/code" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.Main">
+  <component name="RunManager" selected="Application.Test">
     <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="Main" />
       <module name="ProjetCompilation" />
@@ -48,8 +53,8 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.Main" />
         <item itemvalue="Application.Test" />
+        <item itemvalue="Application.Main" />
       </list>
     </recent_temporary>
   </component>
@@ -67,29 +72,49 @@
     <servers />
   </component>
   <component name="WindowStateProjectService">
-    <state x="453" y="120" key="#com.intellij.ide.util.MemberChooser" timestamp="1674571691271">
+    <state x="453" y="120" key="#com.intellij.ide.util.MemberChooser" timestamp="1674573992144">
       <screen x="0" y="0" width="1280" height="800" />
     </state>
-    <state x="453" y="120" key="#com.intellij.ide.util.MemberChooser/0.0.1280.800@0.0.1280.800" timestamp="1674571691271" />
-    <state width="1238" height="212" key="GridCell.Tab.0.bottom" timestamp="1674572431095">
+    <state x="453" y="120" key="#com.intellij.ide.util.MemberChooser/0.0.1280.800@0.0.1280.800" timestamp="1674573992144" />
+    <state x="322" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog" timestamp="1674574295967">
       <screen x="0" y="0" width="1280" height="800" />
     </state>
-    <state width="1238" height="212" key="GridCell.Tab.0.bottom/0.0.1280.800@0.0.1280.800" timestamp="1674572431095" />
-    <state width="1238" height="212" key="GridCell.Tab.0.bottom/0.25.1280.738@0.25.1280.738" timestamp="1674571866051" />
-    <state width="1238" height="212" key="GridCell.Tab.0.center" timestamp="1674572431094">
+    <state x="322" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/0.0.1280.800@0.0.1280.800" timestamp="1674574295967" />
+    <state width="1238" height="212" key="GridCell.Tab.0.bottom" timestamp="1674596287475">
       <screen x="0" y="0" width="1280" height="800" />
     </state>
-    <state width="1238" height="212" key="GridCell.Tab.0.center/0.0.1280.800@0.0.1280.800" timestamp="1674572431094" />
-    <state width="1238" height="212" key="GridCell.Tab.0.center/0.25.1280.738@0.25.1280.738" timestamp="1674571866044" />
-    <state width="1238" height="212" key="GridCell.Tab.0.left" timestamp="1674572431093">
+    <state width="1238" height="212" key="GridCell.Tab.0.bottom/0.0.1280.800@0.0.1280.800" timestamp="1674596287475" />
+    <state width="1238" height="212" key="GridCell.Tab.0.bottom/0.25.1280.736@0.25.1280.736" timestamp="1674596048002" />
+    <state width="1238" height="212" key="GridCell.Tab.0.bottom/0.25.1280.738@0.25.1280.738" timestamp="1674572442406" />
+    <state width="1238" height="212" key="GridCell.Tab.0.center" timestamp="1674596287473">
       <screen x="0" y="0" width="1280" height="800" />
     </state>
-    <state width="1238" height="212" key="GridCell.Tab.0.left/0.0.1280.800@0.0.1280.800" timestamp="1674572431093" />
-    <state width="1238" height="212" key="GridCell.Tab.0.left/0.25.1280.738@0.25.1280.738" timestamp="1674571866041" />
-    <state width="1238" height="212" key="GridCell.Tab.0.right" timestamp="1674572431095">
+    <state width="1238" height="212" key="GridCell.Tab.0.center/0.0.1280.800@0.0.1280.800" timestamp="1674596287473" />
+    <state width="1238" height="212" key="GridCell.Tab.0.center/0.25.1280.736@0.25.1280.736" timestamp="1674596047998" />
+    <state width="1238" height="212" key="GridCell.Tab.0.center/0.25.1280.738@0.25.1280.738" timestamp="1674572442404" />
+    <state width="1238" height="212" key="GridCell.Tab.0.left" timestamp="1674596287473">
       <screen x="0" y="0" width="1280" height="800" />
     </state>
-    <state width="1238" height="212" key="GridCell.Tab.0.right/0.0.1280.800@0.0.1280.800" timestamp="1674572431095" />
-    <state width="1238" height="212" key="GridCell.Tab.0.right/0.25.1280.738@0.25.1280.738" timestamp="1674571866049" />
+    <state width="1238" height="212" key="GridCell.Tab.0.left/0.0.1280.800@0.0.1280.800" timestamp="1674596287473" />
+    <state width="1238" height="212" key="GridCell.Tab.0.left/0.25.1280.736@0.25.1280.736" timestamp="1674596047995" />
+    <state width="1238" height="212" key="GridCell.Tab.0.left/0.25.1280.738@0.25.1280.738" timestamp="1674572442403" />
+    <state width="1238" height="212" key="GridCell.Tab.0.right" timestamp="1674596287474">
+      <screen x="0" y="0" width="1280" height="800" />
+    </state>
+    <state width="1238" height="212" key="GridCell.Tab.0.right/0.0.1280.800@0.0.1280.800" timestamp="1674596287474" />
+    <state width="1238" height="212" key="GridCell.Tab.0.right/0.25.1280.736@0.25.1280.736" timestamp="1674596048000" />
+    <state width="1238" height="212" key="GridCell.Tab.0.right/0.25.1280.738@0.25.1280.738" timestamp="1674572442405" />
+    <state x="149" y="36" key="SettingsEditor" timestamp="1674573675093">
+      <screen x="0" y="0" width="1280" height="800" />
+    </state>
+    <state x="149" y="36" key="SettingsEditor/0.0.1280.800@0.0.1280.800" timestamp="1674573675093" />
+    <state width="500" height="445" key="SwitcherDM" timestamp="1674575195390">
+      <screen x="0" y="0" width="1280" height="800" />
+    </state>
+    <state width="500" height="445" key="SwitcherDM/0.0.1280.800@0.0.1280.800" timestamp="1674575195390" />
+    <state width="600" height="424" key="javadoc.popup" timestamp="1674573417675">
+      <screen x="0" y="0" width="1280" height="800" />
+    </state>
+    <state width="600" height="424" key="javadoc.popup/0.0.1280.800@0.0.1280.800" timestamp="1674573417675" />
   </component>
 </project>
