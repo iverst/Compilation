@@ -48,6 +48,8 @@ public class Langage {
 class Transition {
     private int eInitial, eFinale;
     private char[] mots;
+    //si vrai parcourt renvoie vrai si c compris dans mots
+    //si faux parcourt renvoie vrai si c non compris dans mots
     private boolean motsAcceptes;
 
     public Transition(int eInitial,  char[] mots, int eFinale) {
@@ -56,7 +58,7 @@ class Transition {
         this.mots = mots;
         this.motsAcceptes = true;
     }
-
+    //constructeur pour faire une transition inverse
     public Transition(int eInitial, char[] mots, int eFinale, boolean motsAcceptes) {
         this.eInitial = eInitial;
         this.eFinale = eFinale;
