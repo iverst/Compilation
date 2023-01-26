@@ -47,16 +47,29 @@ public class Langage {
 //represente une transition du langage
 class Transition {
     private int eInitial, eFinale;
-    private char[] motsAcceptes;
+    private char[] mots;
+    private boolean motsAcceptes;
 
-    public Transition(int eInitial,  char[] motsAcceptes, int eFinale) {
+    public Transition(int eInitial,  char[] mots, int eFinale) {
         this.eInitial = eInitial;
         this.eFinale = eFinale;
+        this.mots = mots;
+        this.motsAcceptes = true;
+    }
+
+    public Transition(int eInitial, char[] mots, int eFinale, boolean motsAcceptes) {
+        this.eInitial = eInitial;
+        this.eFinale = eFinale;
+        this.mots = mots;
         this.motsAcceptes = motsAcceptes;
     }
+
     public boolean estAccepte(char c) {
-        for (char mot : motsAcceptes) {
-            if (mot == c) {
+        for (char mot : mots) {
+            if (mot == c && motsAcceptes) {
+                return true;
+            }
+            else if (mot != c && !motsAcceptes) {
                 return true;
             }
         }
@@ -71,8 +84,8 @@ class Transition {
         return eFinale;
     }
 
-    public char[] getMotsAcceptes() {
-        return motsAcceptes;
+    public char[] getMots() {
+        return mots;
     }
 }
 

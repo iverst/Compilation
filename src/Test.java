@@ -1,6 +1,6 @@
 public class Test {
     public static void main(String[] args) {
-        testErreur();
+        //testErreur();
         testLangage();
     }
     public static void testErreur() {
@@ -10,19 +10,19 @@ public class Test {
 
     public static void testLangage() {
 
-        Transition[] transitions = {new Transition(0, new char[]{'a'},0),
-                new Transition(0, new char[]{'b'},1),
-                new Transition(1, new char[]{'c'},2)
+        Transition[] transitions = {new Transition(0, new char[]{'a'},1, false),
+                new Transition(1, new char[]{'b'},1, true),
+                //new Transition(1, new char[]{'c'},2)
 
         };
-        Langage l = new Langage(0, new int[]{2}, transitions);
+        Langage l = new Langage(0, new int[]{1}, transitions);
         /*
         System.out.println(l.parcourir('a'));
         System.out.println(l.parcourir('b'));
         System.out.println(l.estAccepte());
 
          */
-        System.out.println(l.reconnaitMot("cc"));
+        System.out.println(l.reconnaitMot("bbbbbb"));
         //System.out.println(l.reconnaitMot("aaaabc"));
     }
 }
