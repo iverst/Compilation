@@ -1,8 +1,15 @@
 public class Test {
     public static void main(String[] args) {
         //testErreur();
-        testLangage();
+        //testLangage();
+        testTools();
     }
+    public static void testTools() {
+        char[] c = new char[]{'a', 'b', 'c'};
+        System.out.println(Tools.getIntance().contains(c, 'a'));
+        System.out.println(Tools.getIntance().contains(c, 'd'));
+    }
+
     public static void testErreur() {
         Erreur erreur = new Erreur(1, "fin de fichier atteinte");
         System.out.println(erreur.afficherErreur());

@@ -1,5 +1,9 @@
+import com.sun.tools.javac.util.ArrayUtils;
+
 import javax.xml.transform.Source;
 import java.io.File;
+import java.lang.reflect.Array;
+import java.util.ArrayList;
 import java.util.Scanner;
 
 
@@ -15,6 +19,10 @@ public class AnalyseurLexical {
         while (LIRE_CHAR()) {
             SAUTER_SEPARATEURS();
         }
+    }
+
+    public void test() {
+
     }
 
     ////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -46,6 +54,12 @@ public class AnalyseurLexical {
                 LIRE_CHAR();
             }
         }
+    }
+
+    public T_UNILEX RECO_ENTIER() {
+        char[] chiffres = "0123456789".toCharArray();
+
+        return null;
     }
 
 
