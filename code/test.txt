@@ -1,4 +1,4 @@
 Voila le    fichier
 
-{Ceci est un commentaire}
+{Ceci est {un comm}entaire}
 fhjvjejf jfjfj
