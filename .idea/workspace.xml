@@ -5,6 +5,7 @@
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/code/test.txt" beforeDir="false" afterPath="$PROJECT_DIR$/code/test.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/AnalyseurLexical.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/AnalyseurLexical.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Tools.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Tools.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -70,7 +71,19 @@
       <option name="presentableId" value="Default" />
       <updated>1674570079091</updated>
     </task>
+    <task id="LOCAL-00001" summary="Implémentation méthode RECO_ENTIER">
+      <created>1675958130984</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1675958130984</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Implémentation méthode RECO_ENTIER" />
+    <option name="LAST_COMMIT_MESSAGE" value="Implémentation méthode RECO_ENTIER" />
   </component>
   <component name="WindowStateProjectService">
     <state x="453" y="120" key="#com.intellij.ide.util.MemberChooser" timestamp="1675782902621">
@@ -81,32 +94,32 @@
       <screen x="0" y="0" width="1280" height="800" />
     </state>
     <state x="322" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/0.0.1280.800@0.0.1280.800" timestamp="1674726195527" />
-    <state x="219" y="99" key="CommitChangelistDialog2" timestamp="1675958113568">
+    <state x="219" y="99" key="CommitChangelistDialog2" timestamp="1675958130588">
       <screen x="0" y="0" width="1280" height="800" />
     </state>
-    <state x="219" y="99" key="CommitChangelistDialog2/0.0.1280.800@0.0.1280.800" timestamp="1675958113568" />
-    <state width="1238" height="212" key="GridCell.Tab.0.bottom" timestamp="1675958113602">
+    <state x="219" y="99" key="CommitChangelistDialog2/0.0.1280.800@0.0.1280.800" timestamp="1675958130588" />
+    <state width="1238" height="212" key="GridCell.Tab.0.bottom" timestamp="1675959162066">
       <screen x="0" y="0" width="1280" height="800" />
     </state>
-    <state width="1238" height="212" key="GridCell.Tab.0.bottom/0.0.1280.800@0.0.1280.800" timestamp="1675958113602" />
+    <state width="1238" height="212" key="GridCell.Tab.0.bottom/0.0.1280.800@0.0.1280.800" timestamp="1675959162066" />
     <state width="1238" height="212" key="GridCell.Tab.0.bottom/0.25.1280.736@0.25.1280.736" timestamp="1674596048002" />
     <state width="1238" height="212" key="GridCell.Tab.0.bottom/0.25.1280.738@0.25.1280.738" timestamp="1674572442406" />
-    <state width="1238" height="212" key="GridCell.Tab.0.center" timestamp="1675958113602">
+    <state width="1238" height="212" key="GridCell.Tab.0.center" timestamp="1675959162065">
       <screen x="0" y="0" width="1280" height="800" />
     </state>
-    <state width="1238" height="212" key="GridCell.Tab.0.center/0.0.1280.800@0.0.1280.800" timestamp="1675958113602" />
+    <state width="1238" height="212" key="GridCell.Tab.0.center/0.0.1280.800@0.0.1280.800" timestamp="1675959162065" />
     <state width="1238" height="212" key="GridCell.Tab.0.center/0.25.1280.736@0.25.1280.736" timestamp="1674596047998" />
     <state width="1238" height="212" key="GridCell.Tab.0.center/0.25.1280.738@0.25.1280.738" timestamp="1674572442404" />
-    <state width="1238" height="212" key="GridCell.Tab.0.left" timestamp="1675958113601">
+    <state width="1238" height="212" key="GridCell.Tab.0.left" timestamp="1675959162064">
       <screen x="0" y="0" width="1280" height="800" />
     </state>
-    <state width="1238" height="212" key="GridCell.Tab.0.left/0.0.1280.800@0.0.1280.800" timestamp="1675958113601" />
+    <state width="1238" height="212" key="GridCell.Tab.0.left/0.0.1280.800@0.0.1280.800" timestamp="1675959162064" />
     <state width="1238" height="212" key="GridCell.Tab.0.left/0.25.1280.736@0.25.1280.736" timestamp="1674596047995" />
     <state width="1238" height="212" key="GridCell.Tab.0.left/0.25.1280.738@0.25.1280.738" timestamp="1674572442403" />
-    <state width="1238" height="212" key="GridCell.Tab.0.right" timestamp="1675958113602">
+    <state width="1238" height="212" key="GridCell.Tab.0.right" timestamp="1675959162065">
       <screen x="0" y="0" width="1280" height="800" />
     </state>
-    <state width="1238" height="212" key="GridCell.Tab.0.right/0.0.1280.800@0.0.1280.800" timestamp="1675958113602" />
+    <state width="1238" height="212" key="GridCell.Tab.0.right/0.0.1280.800@0.0.1280.800" timestamp="1675959162065" />
     <state width="1238" height="212" key="GridCell.Tab.0.right/0.25.1280.736@0.25.1280.736" timestamp="1674596048000" />
     <state width="1238" height="212" key="GridCell.Tab.0.right/0.25.1280.738@0.25.1280.738" timestamp="1674572442405" />
     <state x="149" y="36" key="SettingsEditor" timestamp="1674573675093">

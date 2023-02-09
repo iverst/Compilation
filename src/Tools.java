@@ -17,7 +17,7 @@ public class Tools {
         return false;
     }
 
-    public boolean contains(char[] array, int e) {
+    public boolean contains(char[] array, char e) {
         for (char i : array) {
             if(i == e) {
                 return true;

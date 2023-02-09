@@ -33,8 +33,11 @@ public class AnalyseurLexical {
         while (LIRE_CHAR()) {
             SAUTER_SEPARATEURS();
             if(Compilateur.CARLU == '1')
-                System.out.println(RECO_ENTIER());
-
+                RECO_ENTIER();
+            else {
+                SAUTER_SEPARATEURS();
+                RECO_CHAINE();
+            }
         }
     }
 
@@ -55,18 +58,16 @@ public class AnalyseurLexical {
         //tabulation
         if (Compilateur.CARLU == ' ' || Compilateur.CARLU == '\t') {
             while (Compilateur.CARLU == ' ' || Compilateur.CARLU == '\t') {
-                System.out.println(LIRE_CHAR());
+                LIRE_CHAR();
             }
         }
         //commentaire
         if (Compilateur.CARLU == '{') {
-            //System.out.println("Commentaire :" + "'" + Compilateur.CARLU + "',");
 
             LIRE_CHAR();
             int nbCommentaire = 1;
 
             while (nbCommentaire != 0 ) {
-                //System.out.println(Compilateur.CARLU + "  :  " + String.valueOf(nbCommentaire));
                 if (Compilateur.CARLU == '{') {
                     nbCommentaire++;
                 }
@@ -78,7 +79,7 @@ public class AnalyseurLexical {
             }
         }
     }
-
+    ////////////////////////////////////////////////////////////////////////////////////////////////////
     public T_UNILEX RECO_ENTIER() {
         String nombreChaine = "";
         while (Tools.getIntance().contains(chiffres ,Compilateur.CARLU)) {
@@ -99,5 +100,23 @@ public class AnalyseurLexical {
         return T_UNILEX.ENT;
     }
 
+    ////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+    public T_UNILEX RECO_CHAINE() {
+        boolean hasEnded;
+        String chaine = "";
+        while (hasEnded = LIRE_CHAR()  && Compilateur.CARLU != '\'') {
+            chaine += Compilateur.CARLU;
+        }
+        if (!hasEnded) {
+            LIRE_CHAR();
+        }
+        System.out.print("chaine");
+        System.out.println(chaine);
+        return T_UNILEX.CH;
+    }
+
+    ////////////////////////////////////////////////////////////////////////////////////////////////////
 
 }
