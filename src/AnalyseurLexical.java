@@ -32,11 +32,10 @@ public class AnalyseurLexical {
         this.chars = data.toCharArray();
         while (LIRE_CHAR()) {
             SAUTER_SEPARATEURS();
+            if(Compilateur.CARLU == '1')
+                System.out.println(RECO_ENTIER());
+
         }
-    }
-
-    public void test() {
-
     }
 
     ////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -56,18 +55,18 @@ public class AnalyseurLexical {
         //tabulation
         if (Compilateur.CARLU == ' ' || Compilateur.CARLU == '\t') {
             while (Compilateur.CARLU == ' ' || Compilateur.CARLU == '\t') {
-                LIRE_CHAR();
+                System.out.println(LIRE_CHAR());
             }
         }
         //commentaire
         if (Compilateur.CARLU == '{') {
-            System.out.println("Commentaire :" + "'" + Compilateur.CARLU + "',");
+            //System.out.println("Commentaire :" + "'" + Compilateur.CARLU + "',");
 
             LIRE_CHAR();
             int nbCommentaire = 1;
 
             while (nbCommentaire != 0 ) {
-                System.out.println(Compilateur.CARLU + "  :  " + String.valueOf(nbCommentaire));
+                //System.out.println(Compilateur.CARLU + "  :  " + String.valueOf(nbCommentaire));
                 if (Compilateur.CARLU == '{') {
                     nbCommentaire++;
                 }
@@ -81,13 +80,23 @@ public class AnalyseurLexical {
     }
 
     public T_UNILEX RECO_ENTIER() {
-        String nombre = "";
+        String nombreChaine = "";
         while (Tools.getIntance().contains(chiffres ,Compilateur.CARLU)) {
-            nombre += Compilateur.CARLU;
-            LIRE_CHAR();
+            nombreChaine += Compilateur.CARLU;
+            if(! LIRE_CHAR()) {
+                break;
+            }
         }
-        //if (nombre.length() > Compilateur.M)
-        return null;
+        int nombre = Integer.parseInt(nombreChaine);
+
+        if (MAX_INT < nombre) {
+            Erreur erreur = new Erreur(2, "Int supérieur à la valeur maximale de 32767");
+            erreur.afficherErreur();
+            return null;
+        }
+        Compilateur.NOMBRE = nombre;
+
+        return T_UNILEX.ENT;
     }
 
 
