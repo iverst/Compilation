@@ -38,9 +38,9 @@ public class Compilateur {
 
     ////////////////////////////////////////////////////////////////////////////////////////////////////
 
-    public boolean EST_UN_MOT_RESERVE(String mot) {
+    public boolean EST_UN_MOT_RESERVE() {
         for (String s : Compilateur.TABLE_MOTS_RESERVES) {
-            if (mot.toLowerCase().equals(s.toLowerCase())) {
+            if (Compilateur.CHAINE.equals(s.toUpperCase())) {
                 return true;
             }
         }
