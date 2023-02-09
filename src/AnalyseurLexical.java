@@ -33,7 +33,7 @@ public class AnalyseurLexical {
     public AnalyseurLexical(Compilateur compilateur) {
         this.compilateur = compilateur;
     }
-    
+
 
     public void INITIALISER(String data) {
         this.chars = data.toCharArray();
@@ -43,7 +43,9 @@ public class AnalyseurLexical {
     public void ANALEX() {
         do {
 
+
             T_UNILEX uniteLexicale = null;
+
             if (Compilateur.CARLU == '\'') {
 
                 uniteLexicale = RECO_CHAINE();
@@ -58,16 +60,19 @@ public class AnalyseurLexical {
             else if (Tools.getIntance().contains(symbolesSimples, Compilateur.CARLU)) {
                 uniteLexicale = RECO_SYMB();
             }
-            else {
+            else if (Compilateur.CARLU == ' ' || Compilateur.CARLU == '\t' || Compilateur.CARLU == '{'){
 
                 SAUTER_SEPARATEURS();
             }
 
+            else {
+                LIRE_CHAR();
+            }
             if (uniteLexicale != null) {
                 System.out.println(uniteLexicale);
             }
         }
-        while (LIRE_CHAR());
+        while (! FIN_DE_FICHIER());
     }
 
 
@@ -84,6 +89,17 @@ public class AnalyseurLexical {
             return false;
         }
     }
+    ////////////////////////////////////////////////////////////////////////////////////////////////////
+    private boolean FIN_DE_FICHIER() {
+        if (Compilateur.NUM_LIGNE < chars.length) {
+            return false;
+        }
+        else {
+            System.out.println(new Erreur(1, "fin de fichier atteinte").afficherErreur());
+            return true;
+        }
+    }
+
     ////////////////////////////////////////////////////////////////////////////////////////////////////
     private void SAUTER_SEPARATEURS() {
         System.out.println("SAUT");
