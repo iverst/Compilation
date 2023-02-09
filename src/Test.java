@@ -7,9 +7,6 @@ public class Test {
     }
     public static void testMotReservé() {
         Compilateur compilateur = new Compilateur();
-        System.out.println(compilateur.EST_UN_MOT_RESERVE("djdjjd"));
-        System.out.println(compilateur.EST_UN_MOT_RESERVE("DEBUT"));
-        System.out.println(compilateur.EST_UN_MOT_RESERVE("fin"));
 
     }
 

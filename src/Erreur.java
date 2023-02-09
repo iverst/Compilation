@@ -12,6 +12,7 @@ public class Erreur {
     }
 
     public void creerException() throws Exception {
+
         throw new Exception(afficherErreur());
     }
 }

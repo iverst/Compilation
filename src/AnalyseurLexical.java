@@ -13,7 +13,7 @@ public class AnalyseurLexical {
     //nombre entiers
     private final int MAX_INT = 32767;
     private char[] chiffres = "0123456789".toCharArray();
-    //chaines charactères
+    //chaines caractères
     private final int MAX_STRING = 50;
     //identificateurs
     private final int MAX_MOTCLE = 20;
@@ -34,9 +34,11 @@ public class AnalyseurLexical {
             SAUTER_SEPARATEURS();
             if(Compilateur.CARLU == '1')
                 RECO_ENTIER();
-            else {
-                SAUTER_SEPARATEURS();
+            else if (Compilateur.CARLU == '\'') {
                 RECO_CHAINE();
+            }
+            else {
+                System.out.println(RECO_IDENT_OU_MOT_RESERVE());
             }
         }
     }
@@ -93,6 +95,12 @@ public class AnalyseurLexical {
         if (MAX_INT < nombre) {
             Erreur erreur = new Erreur(2, "Int supérieur à la valeur maximale de 32767");
             erreur.afficherErreur();
+            try {
+                erreur.creerException();
+            }
+            catch (Exception e) {
+                e.printStackTrace();
+            }
             return null;
         }
         Compilateur.NOMBRE = nombre;
@@ -112,11 +120,40 @@ public class AnalyseurLexical {
         if (!hasEnded) {
             LIRE_CHAR();
         }
-        System.out.print("chaine");
-        System.out.println(chaine);
+
+        if (chaine.length() > Compilateur.LONG_MAX_CHAINE) {
+            try {
+                Erreur erreur = new Erreur(20, "Chaine de caractère trop longe !");
+                erreur.creerException();
+            }
+            catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+
         return T_UNILEX.CH;
     }
 
     ////////////////////////////////////////////////////////////////////////////////////////////////////
+
+    public T_UNILEX RECO_IDENT_OU_MOT_RESERVE() {
+        String ident = "";
+        while ((Compilateur.CARLU >= 'A' && Compilateur.CARLU <= 'Z') || (Compilateur.CARLU >= 'a' && Compilateur.CARLU <= 'z') || Compilateur.CARLU == '_' || Tools.getIntance().contains(chiffres, Compilateur.CARLU)) {
+            ident += Compilateur.CARLU;
+            if (! LIRE_CHAR() || ident.length() >= Compilateur.LONG_MAX_IDENT) {
+                break;
+            }
+            LIRE_CHAR();
+        }
+        
+        Compilateur.CHAINE = ident.toUpperCase();
+        if(Compilateur.EST_UN_MOT_RESERVE()) {
+            return T_UNILEX.MOTCLE;
+        }
+        return T_UNILEX.IDENT;
+    }
+
+    ////////////////////////////////////////////////////////////////////////////////////////////////////
+
 
 }

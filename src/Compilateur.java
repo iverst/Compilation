@@ -38,7 +38,7 @@ public class Compilateur {
 
     ////////////////////////////////////////////////////////////////////////////////////////////////////
 
-    public boolean EST_UN_MOT_RESERVE() {
+    public static boolean EST_UN_MOT_RESERVE() {
         for (String s : Compilateur.TABLE_MOTS_RESERVES) {
             if (Compilateur.CHAINE.equals(s.toUpperCase())) {
                 return true;
