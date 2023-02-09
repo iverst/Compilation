@@ -4,6 +4,7 @@ import javax.xml.transform.Source;
 import java.io.File;
 import java.lang.reflect.Array;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 
@@ -145,7 +146,7 @@ public class AnalyseurLexical {
             }
             LIRE_CHAR();
         }
-        
+
         Compilateur.CHAINE = ident.toUpperCase();
         if(Compilateur.EST_UN_MOT_RESERVE()) {
             return T_UNILEX.MOTCLE;
@@ -155,5 +156,66 @@ public class AnalyseurLexical {
 
     ////////////////////////////////////////////////////////////////////////////////////////////////////
 
+    public T_UNILEX RECO_SYMB() {
+        char c = Compilateur.CARLU;
+        LIRE_CHAR();
+        switch (c) {
+            //cas simple
+            case ';':
+                return T_UNILEX.PTVIRG;
+            case '.':
+                return T_UNILEX.POINT;
+            case '=':
+                return T_UNILEX.EG;
+            case '+':
+                return T_UNILEX.PLUS;
+            case '-':
+                return T_UNILEX.MOINS;
+            case '*':
+                return T_UNILEX.MULT;
+            case '/':
+                return T_UNILEX.DIVI;
+            case '(':
+                return T_UNILEX.PAROUV;
+            case ')':
+                return T_UNILEX.PARFER;
+                //cas complexes
+
+            case '<':
+                if(Compilateur.CARLU == '>') {
+                    LIRE_CHAR();
+                    return T_UNILEX.DIFF;
+                }
+                else if (Compilateur.CARLU == '=') {
+                    LIRE_CHAR();
+                    return T_UNILEX.INFE;
+                }
+                else {
+                    return T_UNILEX.INF;
+                }
+            case '>':
+                if(Compilateur.CARLU == '=') {
+                    LIRE_CHAR();
+                    return T_UNILEX.SUPE;
+                }
+                else {
+                    return T_UNILEX.SUP;
+                }
+            case ':':
+                if(Compilateur.CARLU == '=') {
+                    LIRE_CHAR();
+                    return T_UNILEX.AFF;
+                }
+                else {
+                    return T_UNILEX.DEUXPTS;
+                }
+
+            default:
+
+                break;
+
+        }
+        return null;
+    }
 
 }
