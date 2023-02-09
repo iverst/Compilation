@@ -3,6 +3,7 @@ import com.sun.tools.javac.util.ArrayUtils;
 import javax.xml.transform.Source;
 import java.io.File;
 import java.lang.reflect.Array;
+import java.sql.SQLOutput;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
@@ -23,26 +24,53 @@ public class AnalyseurLexical {
     private final char[] symbolesSimples = ",;.:()<>=+*-/".toCharArray();
     //symboles composes
     private final String[] symbolesComposes = {"<=", ">=", "<>", ":="};
+    private final char[] alphabet = "abcdefghijklmnopqrstuvwxyz".toCharArray();
+    private final char[] alphabetMaj = "abcdefghijklmnopqrstuvwxyz".toUpperCase().toCharArray();
 
+    //Unités lexicales
+    ArrayList<T_UNILEX> unitesLexicales = new ArrayList<>();
 
     public AnalyseurLexical(Compilateur compilateur) {
         this.compilateur = compilateur;
     }
+    
 
-    public void analyser(String data) {
+    public void INITIALISER(String data) {
         this.chars = data.toCharArray();
-        while (LIRE_CHAR()) {
-            SAUTER_SEPARATEURS();
-            if(Compilateur.CARLU == '1')
-                RECO_ENTIER();
-            else if (Compilateur.CARLU == '\'') {
-                RECO_CHAINE();
+
+    }
+
+    public void ANALEX() {
+        do {
+
+            T_UNILEX uniteLexicale = null;
+            if (Compilateur.CARLU == '\'') {
+
+                uniteLexicale = RECO_CHAINE();
+            }
+            else if (Tools.getIntance().contains(chiffres, Compilateur.CARLU)) {
+                uniteLexicale = RECO_ENTIER();
+            }
+            else if (Tools.getIntance().contains(alphabet, Compilateur.CARLU) || Tools.getIntance().contains(alphabetMaj, Compilateur.CARLU) ||
+                    Compilateur.CARLU == '_' || Tools.getIntance().contains(chiffres, Compilateur.CARLU)) {
+                uniteLexicale = RECO_IDENT_OU_MOT_RESERVE();
+            }
+            else if (Tools.getIntance().contains(symbolesSimples, Compilateur.CARLU)) {
+                uniteLexicale = RECO_SYMB();
             }
             else {
-                System.out.println(RECO_IDENT_OU_MOT_RESERVE());
+
+                SAUTER_SEPARATEURS();
+            }
+
+            if (uniteLexicale != null) {
+                System.out.println(uniteLexicale);
             }
         }
+        while (LIRE_CHAR());
     }
+
+
 
     ////////////////////////////////////////////////////////////////////////////////////////////////////
     private boolean LIRE_CHAR() {
@@ -58,6 +86,7 @@ public class AnalyseurLexical {
     }
     ////////////////////////////////////////////////////////////////////////////////////////////////////
     private void SAUTER_SEPARATEURS() {
+        System.out.println("SAUT");
         //tabulation
         if (Compilateur.CARLU == ' ' || Compilateur.CARLU == '\t') {
             while (Compilateur.CARLU == ' ' || Compilateur.CARLU == '\t') {
@@ -122,6 +151,7 @@ public class AnalyseurLexical {
             LIRE_CHAR();
         }
 
+
         if (chaine.length() > Compilateur.LONG_MAX_CHAINE) {
             try {
                 Erreur erreur = new Erreur(20, "Chaine de caractère trop longe !");
@@ -139,15 +169,15 @@ public class AnalyseurLexical {
 
     public T_UNILEX RECO_IDENT_OU_MOT_RESERVE() {
         String ident = "";
-        while ((Compilateur.CARLU >= 'A' && Compilateur.CARLU <= 'Z') || (Compilateur.CARLU >= 'a' && Compilateur.CARLU <= 'z') || Compilateur.CARLU == '_' || Tools.getIntance().contains(chiffres, Compilateur.CARLU)) {
+        while (Tools.getIntance().contains(alphabet, Compilateur.CARLU) || Tools.getIntance().contains(alphabetMaj, Compilateur.CARLU) || Compilateur.CARLU == '_' || Tools.getIntance().contains(chiffres, Compilateur.CARLU)) {
             ident += Compilateur.CARLU;
             if (! LIRE_CHAR() || ident.length() >= Compilateur.LONG_MAX_IDENT) {
                 break;
             }
-            LIRE_CHAR();
         }
 
         Compilateur.CHAINE = ident.toUpperCase();
+
         if(Compilateur.EST_UN_MOT_RESERVE()) {
             return T_UNILEX.MOTCLE;
         }
@@ -209,13 +239,10 @@ public class AnalyseurLexical {
                 else {
                     return T_UNILEX.DEUXPTS;
                 }
-
             default:
-
-                break;
+                return null;
 
         }
-        return null;
     }
 
 }

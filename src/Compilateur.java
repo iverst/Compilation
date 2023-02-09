@@ -16,7 +16,8 @@ public class Compilateur {
     public void compiler(){
         AnalyseurLexical analyseurLexical = new AnalyseurLexical(this);
         data = lireFichier(SOURCE);
-        analyseurLexical.analyser(data);
+        analyseurLexical.INITIALISER(data);
+        analyseurLexical.ANALEX();
 
     }
 
