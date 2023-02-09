@@ -1,5 +1,5 @@
 debut
-'Dis donc'
+'Dis donc'=
 {Ceci est {un comm}entaire}'voila'
 1939
 4839

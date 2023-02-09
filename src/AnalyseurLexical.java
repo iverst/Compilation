@@ -1,12 +1,4 @@
-import com.sun.tools.javac.util.ArrayUtils;
-
-import javax.xml.transform.Source;
-import java.io.File;
-import java.lang.reflect.Array;
-import java.sql.SQLOutput;
 import java.util.ArrayList;
-import java.util.List;
-import java.util.Scanner;
 
 
 public class AnalyseurLexical {
@@ -29,6 +21,8 @@ public class AnalyseurLexical {
 
     //Unités lexicales
     ArrayList<T_UNILEX> unitesLexicales = new ArrayList<>();
+    //caractères correspondant
+    ArrayList<String> unitesLexicalesCaracteres = new ArrayList<>();
 
     public AnalyseurLexical(Compilateur compilateur) {
         this.compilateur = compilateur;
@@ -47,9 +41,9 @@ public class AnalyseurLexical {
             T_UNILEX uniteLexicale = null;
 
             if (Compilateur.CARLU == '\'') {
-
                 uniteLexicale = RECO_CHAINE();
             }
+
             else if (Tools.getIntance().contains(chiffres, Compilateur.CARLU)) {
                 uniteLexicale = RECO_ENTIER();
             }
@@ -61,7 +55,6 @@ public class AnalyseurLexical {
                 uniteLexicale = RECO_SYMB();
             }
             else if (Compilateur.CARLU == ' ' || Compilateur.CARLU == '\t' || Compilateur.CARLU == '{'){
-
                 SAUTER_SEPARATEURS();
             }
 
@@ -69,14 +62,85 @@ public class AnalyseurLexical {
                 LIRE_CHAR();
             }
             if (uniteLexicale != null) {
-                System.out.println(uniteLexicale);
+                AFFICHER(uniteLexicale);
             }
         }
         while (! FIN_DE_FICHIER());
     }
+    ////////////////////////////////////////////////////////////////////////////////////////////////////
+    public void AFFICHER(T_UNILEX uniteLexical) {
+        unitesLexicales.add(uniteLexical);
+        switch (uniteLexical) {
+            case CH:
+            case MOTCLE:
+            case IDENT:
+                unitesLexicalesCaracteres.add(Compilateur.CHAINE);
+                break;
+            case ENT:
+                unitesLexicalesCaracteres.add(String.valueOf(Compilateur.NOMBRE));
+                break;
+            case EG:
+                unitesLexicalesCaracteres.add("=");
+                break;
+            case AFF:
+                unitesLexicalesCaracteres.add(":=");
+                break;
+            case INF:
+                unitesLexicalesCaracteres.add("<");
+                break;
+            case SUP:
+                unitesLexicalesCaracteres.add(">");
+                break;
+            case DIFF:
+                unitesLexicalesCaracteres.add("<>");
+                break;
+            case DIVI:
+                unitesLexicalesCaracteres.add("/");
+                break;
+            case INFE:
+                unitesLexicalesCaracteres.add("<=");
+                break;
+            case MULT:
+                unitesLexicalesCaracteres.add("*");
+                break;
+            case PLUS:
+                unitesLexicalesCaracteres.add("+");
+                break;
+            case SUPE:
+                unitesLexicalesCaracteres.add(">=");
+                break;
+            case MOINS:
+                unitesLexicalesCaracteres.add("-");
+                break;
+            case POINT:
+                unitesLexicalesCaracteres.add(".");
+                break;
+            case PARFER:
+                unitesLexicalesCaracteres.add(")");
+                break;
+            case PAROUV:
+                unitesLexicalesCaracteres.add("(");
+                break;
+            case PTVIRG:
+                unitesLexicalesCaracteres.add(";");
+                break;
+            case DEUXPTS:
+                unitesLexicalesCaracteres.add(":");
+                break;
+            case VIRG:
+                unitesLexicalesCaracteres.add(",");
+                break;
 
+        }
+        System.out.print(unitesLexicales.get(unitesLexicales.size() - 1));
+        System.out.print("  ||  ");
+        System.out.println(unitesLexicalesCaracteres.get(unitesLexicalesCaracteres.size() - 1));
 
+        return;
+    }
 
+    ////////////////////////////////////////////////////////////////////////////////////////////////////
+    ////////////////////////////////////////////////////////////////////////////////////////////////////
     ////////////////////////////////////////////////////////////////////////////////////////////////////
     private boolean LIRE_CHAR() {
         if (Compilateur.NUM_LIGNE < chars.length) {
@@ -128,7 +192,7 @@ public class AnalyseurLexical {
         }
     }
     ////////////////////////////////////////////////////////////////////////////////////////////////////
-    public T_UNILEX RECO_ENTIER() {
+    private T_UNILEX RECO_ENTIER() {
         String nombreChaine = "";
         while (Tools.getIntance().contains(chiffres ,Compilateur.CARLU)) {
             nombreChaine += Compilateur.CARLU;
@@ -157,7 +221,7 @@ public class AnalyseurLexical {
     ////////////////////////////////////////////////////////////////////////////////////////////////////
 
 
-    public T_UNILEX RECO_CHAINE() {
+    private T_UNILEX RECO_CHAINE() {
         boolean hasEnded;
         String chaine = "";
         while (hasEnded = LIRE_CHAR()  && Compilateur.CARLU != '\'') {
@@ -178,12 +242,13 @@ public class AnalyseurLexical {
             }
         }
 
+        Compilateur.CHAINE = chaine;
         return T_UNILEX.CH;
     }
 
     ////////////////////////////////////////////////////////////////////////////////////////////////////
 
-    public T_UNILEX RECO_IDENT_OU_MOT_RESERVE() {
+    private T_UNILEX RECO_IDENT_OU_MOT_RESERVE() {
         String ident = "";
         while (Tools.getIntance().contains(alphabet, Compilateur.CARLU) || Tools.getIntance().contains(alphabetMaj, Compilateur.CARLU) || Compilateur.CARLU == '_' || Tools.getIntance().contains(chiffres, Compilateur.CARLU)) {
             ident += Compilateur.CARLU;
@@ -202,11 +267,13 @@ public class AnalyseurLexical {
 
     ////////////////////////////////////////////////////////////////////////////////////////////////////
 
-    public T_UNILEX RECO_SYMB() {
+    private T_UNILEX RECO_SYMB() {
         char c = Compilateur.CARLU;
         LIRE_CHAR();
         switch (c) {
             //cas simple
+            case ',':
+                return T_UNILEX.VIRG;
             case ';':
                 return T_UNILEX.PTVIRG;
             case '.':

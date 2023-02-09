@@ -19,6 +19,7 @@ public class Compilateur {
         analyseurLexical.INITIALISER(data);
         analyseurLexical.ANALEX();
 
+
     }
 
     public String lireFichier(String filePath) {
@@ -32,7 +33,7 @@ public class Compilateur {
         catch (Exception e) {
             e.printStackTrace();
         }
-        System.out.println(data);
+        //System.out.println(data);
         return data;
 
     }
