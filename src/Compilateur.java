@@ -10,7 +10,7 @@ public class Compilateur {
     public static int NOMBRE;
     public static String CHAINE;
     public static int NUM_LIGNE;
-    public static String[] TABLE_MOTS_RESERVES = new String[NB_MOTS_RESERVES];
+    public static String[] TABLE_MOTS_RESERVES = {"DEBUT", "FIN", "VAR", "ECRIRE", "LIRE","SI"};
     private String data;
 
     public void compiler(){
@@ -34,5 +34,16 @@ public class Compilateur {
         System.out.println(data);
         return data;
 
+    }
+
+    ////////////////////////////////////////////////////////////////////////////////////////////////////
+
+    public boolean EST_UN_MOT_RESERVE(String mot) {
+        for (String s : Compilateur.TABLE_MOTS_RESERVES) {
+            if (mot.toLowerCase().equals(s.toLowerCase())) {
+                return true;
+            }
+        }
+        return false;
     }
 }

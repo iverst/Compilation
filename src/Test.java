@@ -2,8 +2,17 @@ public class Test {
     public static void main(String[] args) {
         //testErreur();
         //testLangage();
-        testTools();
+        //testTools();
+        //testMotReservé();
     }
+    public static void testMotReservé() {
+        Compilateur compilateur = new Compilateur();
+        System.out.println(compilateur.EST_UN_MOT_RESERVE("djdjjd"));
+        System.out.println(compilateur.EST_UN_MOT_RESERVE("DEBUT"));
+        System.out.println(compilateur.EST_UN_MOT_RESERVE("fin"));
+
+    }
+
     public static void testTools() {
         char[] c = new char[]{'a', 'b', 'c'};
         System.out.println(Tools.getIntance().contains(c, 'a'));
