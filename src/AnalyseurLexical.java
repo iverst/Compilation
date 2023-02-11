@@ -43,6 +43,7 @@ public class AnalyseurLexical {
     }
 
     public void ANALEX() {
+        System.out.println("ANALYSEUR LEXICAL :");
         do {
 
 
@@ -63,7 +64,7 @@ public class AnalyseurLexical {
                 uniteLexicale = RECO_SYMB();
             }
             else if (Compilateur.CARLU == ' ' || Compilateur.CARLU == '\t' || Compilateur.CARLU == '{'){
-                SAUTER_SEPARATEURS();
+                SAUTER_SEPARATEURS(false);
             }
 
             else {
@@ -176,8 +177,9 @@ public class AnalyseurLexical {
     }
 
     ////////////////////////////////////////////////////////////////////////////////////////////////////
-    private void SAUTER_SEPARATEURS() {
-        System.out.println("SAUT");
+    private void SAUTER_SEPARATEURS(boolean afficherSaut) {
+        if (afficherSaut)
+            System.out.println("SAUT");
         //tabulation
         if (Compilateur.CARLU == ' ' || Compilateur.CARLU == '\t') {
             while (Compilateur.CARLU == ' ' || Compilateur.CARLU == '\t') {

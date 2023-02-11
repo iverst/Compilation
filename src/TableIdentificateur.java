@@ -73,6 +73,8 @@ public class TableIdentificateur {
     public void AFFICHER_TABLE_IDENT() {
         //recuperer toutes les données de la table des identificateru
         Set<String> idents = indexes.keySet();
+        System.out.println("TABLE DES IDENTIFICATEURS :");
+
         for (String element : idents) {
             Identificateur identificateur = identificateurs[indexes.get(element)];
             System.out.print("[");

@@ -10,7 +10,7 @@ public class Compilateur {
     public static int NOMBRE;
     public static String CHAINE;
     public static int NUM_LIGNE;
-    public static String[] TABLE_MOTS_RESERVES = {"DEBUT", "FIN", "VAR", "ECRIRE", "LIRE","SI"};
+    public static String[] TABLE_MOTS_RESERVES = {"DEBUT", "FIN", "VAR", "ECRIRE", "LIRE","SI", "CONST"};
     private String data;
 
     public void compiler(){
@@ -18,8 +18,9 @@ public class Compilateur {
         data = lireFichier(SOURCE);
         analyseurLexical.INITIALISER(data);
         analyseurLexical.ANALEX();
-
-
+        TableIdentificateur tableIdentificateur = new TableIdentificateur();
+        tableIdentificateur.INSERER_TOKENS(analyseurLexical.TOKENS(), analyseurLexical.TOKENS_CAR());
+        tableIdentificateur.AFFICHER_TABLE_IDENT();
     }
 
     public String lireFichier(String filePath) {

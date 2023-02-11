@@ -1,8 +1,11 @@
 debut
 'Dis donc'=
+U1
 {Ceci est {un comm}entaire}'voila'
 1939
 4839
 32766
+VAR v1
+CONST C1
 'Que se pasa'
-pePito fkkfkf<=
+<=
