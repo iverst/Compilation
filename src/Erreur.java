@@ -15,4 +15,14 @@ public class Erreur {
 
         throw new Exception(afficherErreur());
     }
+
+    public void leverException () {
+        try {
+            creerException();
+        }
+        catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
 }

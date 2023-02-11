@@ -11,7 +11,7 @@ public class AnalyseurLexical {
     private final int MAX_STRING = 50;
     //identificateurs
     private final int MAX_MOTCLE = 20;
-    private String[] motsClés = {"DEBUT", "FIN", "VAR", "ECRIRE", "LIRE","SI"};
+    private String[] motsClés = {"DEBUT", "FIN", "VAR", "ECRIRE", "LIRE","SI", "CONST"};
     //symboles simples
     private final char[] symbolesSimples = ",;.:()<>=+*-/".toCharArray();
     //symboles composes
@@ -20,14 +20,22 @@ public class AnalyseurLexical {
     private final char[] alphabetMaj = "abcdefghijklmnopqrstuvwxyz".toUpperCase().toCharArray();
 
     //Unités lexicales
-    ArrayList<T_UNILEX> unitesLexicales = new ArrayList<>();
+    private ArrayList<T_UNILEX> unitesLexicales = new ArrayList<>();
     //caractères correspondant
-    ArrayList<String> unitesLexicalesCaracteres = new ArrayList<>();
+    private ArrayList<String> unitesLexicalesCaracteres = new ArrayList<>();
 
     public AnalyseurLexical(Compilateur compilateur) {
         this.compilateur = compilateur;
     }
 
+
+    public ArrayList<T_UNILEX> TOKENS() {
+        return unitesLexicales;
+    }
+
+    public ArrayList<String> TOKENS_CAR() {
+        return unitesLexicalesCaracteres;
+    }
 
     public void INITIALISER(String data) {
         this.chars = data.toCharArray();
@@ -132,9 +140,12 @@ public class AnalyseurLexical {
                 break;
 
         }
+        System.out.print("[");
         System.out.print(unitesLexicales.get(unitesLexicales.size() - 1));
-        System.out.print("  ||  ");
-        System.out.println(unitesLexicalesCaracteres.get(unitesLexicalesCaracteres.size() - 1));
+        System.out.print(" || ");
+        System.out.print(unitesLexicalesCaracteres.get(unitesLexicalesCaracteres.size() - 1));
+        System.out.println("]");
+
 
         return;
     }
