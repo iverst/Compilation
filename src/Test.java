@@ -1,16 +1,32 @@
+
 import java.util.ArrayList;
 
+
 public class Test {
+
     public static void main(String[] args) {
         //testErreur();
         //testLangage();
         //testTools();
         //testMotReservé();
-        testTableIdentificateur();
+        //testTableIdentificateur();
+        testSymboles();
     }
-    public static void testMotReservé() {
-        Compilateur compilateur = new Compilateur();
 
+    public static void testSymboles() {
+        Symboles symboles = new Symboles(T_UNILEX.DEUXPTS);
+        Symboles symboles2 = new Symboles(T_UNILEX.MOTCLE, "DEBUT");
+        Symboles symboles3 = new Symboles(SymbolesNonTerminaux.AFFECTATION);
+
+        System.out.println(symboles.isEqual(T_UNILEX.DEUXPTS,"n"));
+        System.out.println(symboles2.isEqual(T_UNILEX.MOTCLE,"n"));
+        System.out.println(symboles2.isEqual(T_UNILEX.MOTCLE,"DEBUT"));
+
+        System.out.println(symboles3.isEqual(T_UNILEX.IDENT,"n"));
+        System.out.println("Test terminalité :");
+        System.out.println(symboles3.isTerminal());
+        System.out.println(symboles2.isTerminal());
+        System.out.println(symboles.isTerminal());
     }
 
     public static void testTableIdentificateur() {
@@ -82,5 +98,4 @@ public class Test {
         //System.out.println(l.reconnaitMot("aaaabc"));
     }
 }
-
 
