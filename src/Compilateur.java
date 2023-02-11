@@ -10,7 +10,7 @@ public class Compilateur {
     public static int NOMBRE;
     public static String CHAINE;
     public static int NUM_LIGNE;
-    public static String[] TABLE_MOTS_RESERVES = {"DEBUT", "FIN", "VAR", "ECRIRE", "LIRE","SI", "CONST"};
+    public static String[] TABLE_MOTS_RESERVES = {"DEBUT", "FIN", "VAR", "ECRIRE", "LIRE","SI", "CONST", "PROGRAMME"};
     private String data;
 
     public void compiler(){
