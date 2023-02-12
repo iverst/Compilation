@@ -16,10 +16,16 @@ public class TableIdentificateur {
             if (TOKENS.get(i) == T_UNILEX.MOTCLE && Identificateur.getType(TOKENS_CAR.get(i)) != null) {
                 String type = TOKENS_CAR.get(i);
                 i++;
-                System.out.println("yes");
                 while (true) {
                     if (TOKENS.get(i) == T_UNILEX.IDENT) {
-                        INSERER(TOKENS_CAR.get(i), type);
+                        if (type.equals("VAR")) {
+                            INSERER(TOKENS_CAR.get(i), type, null);
+                        }
+                        else if(type.equals("CONST")) {
+                            INSERER(TOKENS_CAR.get(i), type, TOKENS_CAR.get(i+2));
+                            CHERCHER(TOKENS_CAR.get(i));
+                            i += 2;
+                        }
                     }
                     else if (TOKENS.get(i) == T_UNILEX.VIRG) {
 
@@ -38,7 +44,7 @@ public class TableIdentificateur {
     }
 
 
-    public int INSERER(String name, String type) {
+    public int INSERER(String name, String type, Object attribut) {
         int index = CHERCHER(name);
         //cas identificateur pas présent dans la table
         if (index == -1) {
@@ -54,7 +60,16 @@ public class TableIdentificateur {
 
             if (position < 100) {
                 indexes.put(name, position);
-                identificateurs[position] = new Identificateur(Identificateur.getType(type));
+                Identificateur ident = new Identificateur(Identificateur.getType(type));
+                if (attribut != null) {
+                    if (attribut instanceof Integer) {
+                        ident.setAttribut(attribut);
+                    }
+                    else if (attribut instanceof String) {
+                        ident.setAttribut(attribut);
+                    }
+                }
+                identificateurs[position] = ident;
                 int indentPosition = position;
                 position++;
                 return indentPosition;
@@ -128,6 +143,10 @@ class Identificateur{
         return type;
     }
 
+    public void setAttribut(Object attribut) {
+        this.attribut = attribut;
+    }
+
     public static TYPE_IDENT getType(String type) {
         switch (type) {
             case "VAR":
@@ -138,6 +157,8 @@ class Identificateur{
                 return null;
         }
     }
+
+
 }
 
 enum TYPE_IDENT { CONST, VAR }

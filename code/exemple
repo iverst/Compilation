@@ -1,5 +1,5 @@
 PROGRAMME exemple;
-CONST CB = 3, AB = 'UUUUUUUUUUU';
+CONST CB = 3, AB = 'UUUUUUUUUUU', a = 'nice';
 VAR NB, OP;
 DEBUT
     ECRIRE('entrez un nombre entier');

@@ -78,11 +78,11 @@ public class Test {
     public static void testTableIdentificateur() {
         TableIdentificateur tableIdentificateur = new TableIdentificateur();
 
-        tableIdentificateur.INSERER("c1", "CONST");
+        tableIdentificateur.INSERER("c1", "CONST", null);
 
-        tableIdentificateur.INSERER("c2", "CONST");
-        tableIdentificateur.INSERER("v1", "VAR");
-        tableIdentificateur.INSERER("c2", "CONST");
+        tableIdentificateur.INSERER("c2", "CONST", null);
+        tableIdentificateur.INSERER("v1", "VAR", null);
+        tableIdentificateur.INSERER("c2", "CONST", null);
 
         ArrayList<T_UNILEX> TOKENS = new ArrayList<>();
         ArrayList<String> TOKENS_CAR = new ArrayList<>();
