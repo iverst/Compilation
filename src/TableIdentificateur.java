@@ -16,10 +16,22 @@ public class TableIdentificateur {
             if (TOKENS.get(i) == T_UNILEX.MOTCLE && Identificateur.getType(TOKENS_CAR.get(i)) != null) {
                 String type = TOKENS_CAR.get(i);
                 i++;
-                if (TOKENS.get(i) == T_UNILEX.IDENT) {
-                    INSERER(TOKENS_CAR.get(i), type);
-                } else {
-                    new Erreur(43, "Tout identificateur doit posséder un nom !").leverException();
+                System.out.println("yes");
+                while (true) {
+                    if (TOKENS.get(i) == T_UNILEX.IDENT) {
+                        INSERER(TOKENS_CAR.get(i), type);
+                    }
+                    else if (TOKENS.get(i) == T_UNILEX.VIRG) {
+
+                    }
+                    else if (i + 1 == TOKENS.size()) {
+
+                    }
+                    else {
+                        break;
+                        //new Erreur(43, "Tout identificateur doit posséder un nom !").leverException();
+                    }
+                    i++;
                 }
             }
         }

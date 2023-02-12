@@ -29,7 +29,12 @@ public class Compilateur {
 
         //Analyse Syntaxique
         AnalyseurSyntaxique analyseurSyntaxique = new AnalyseurSyntaxique(analyseurLexical.TOKENS(), analyseurLexical.TOKENS_CAR());
-        System.out.println(analyseurSyntaxique.EST_CORECT());
+        if(analyseurSyntaxique.EST_CORECT()) {
+            System.out.println("Programme Syntaxiquement Correct");
+        }
+        else {
+            System.out.println("Programme Syntaxiquement INCORRECT !");
+        }
     }
 
     public String lireFichier(String filePath) {

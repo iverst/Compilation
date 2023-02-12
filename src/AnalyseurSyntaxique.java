@@ -11,7 +11,6 @@ public class AnalyseurSyntaxique {
     public AnalyseurSyntaxique(ArrayList<T_UNILEX> TOKENS, ArrayList<String> TOKENS_CHAR) {
         this.TOKENS = (T_UNILEX[]) TOKENS.toArray(new T_UNILEX[0]);
         this.TOKENS_CHAR = (String[]) TOKENS_CHAR.toArray(new String[0]);
-        System.out.println(TOKENS_CHAR);
     }
 
     public boolean EST_CORECT() {
@@ -38,16 +37,10 @@ class LL1 {
 
     public boolean EST_CORRECT() {
         try {
-            if( PROG()) {
-                System.out.println("PROGRAMME CORRCT SYNTAXIQUEMENT");
+            if( PROG() && index + 1 == TOKENS.length) {
                 return true;
             }
             else {
-                System.out.println("PROGRAMME INCORRCT SYNTAXIQUEMENT");
-                System.out.println("DERNIERE CHAINE : " + CHAINE());
-                ANALEX();
-                System.out.println("DERNIERE CHAINE ANALEX: " + CHAINE());
-
                 return false;
             }
         }
@@ -256,33 +249,35 @@ class LL1 {
         if (UNILEX == T_UNILEX.MOTCLE && CHAINE().equals("DEBUT")) {
             UNILEX = ANALEX();
             if (INSTRUCTION()) {
-
-
-                do {
-                    if (UNILEX == T_UNILEX.PTVIRG) {
-                        UNILEX = ANALEX();
-                        if (INSTRUCTION()) {
-
-                        }
-                        else {
-                            return false;
-                        }
-                    }
-                    else {
-                        fin = true;
-                    }
-                }
-                while (! fin);
-
-                if (UNILEX == T_UNILEX.MOTCLE && CHAINE().equals("FIN")) {
+                if (UNILEX == T_UNILEX.PTVIRG) {
                     UNILEX = ANALEX();
-                    return true;
-                }
-                else {
-                    new Erreur("Erreur syntaxique dans une instruction de BLOC: mot clé 'FIN' attendu").afficherErreur();
+                    do {
+                        if (INSTRUCTION()) {
+                            if (UNILEX == T_UNILEX.PTVIRG) {
+                                UNILEX = ANALEX();
+
+                            } else {
+                                new Erreur("Erreur syntaxique dans une instruction de BLOC: ';' attendu").afficherErreur();
+                                return false;
+                            }
+                        } else {
+                            fin = true;
+                        }
+                    }
+                    while (!fin);
+
+                    if (UNILEX == T_UNILEX.MOTCLE && CHAINE().equals("FIN")) {
+                        UNILEX = ANALEX();
+                        return true;
+                    } else {
+                        new Erreur("Erreur syntaxique dans une instruction de BLOC: mot clé 'FIN' attendu").afficherErreur();
+                        return false;
+                    }
+
+                } else {
+                    new Erreur("Erreur syntaxique dans une instruction de BLOC: ';' attendu").afficherErreur();
                     return false;
                 }
-
             }
             else {
                 return false;

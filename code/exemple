@@ -4,6 +4,7 @@ DEBUT
     ECRIRE('entrez un nombre entier');
     LIRE(NB);
     NB := NB * NB;
-    ECRIRE('LE carre du nombre est');
-    ECRIRE()
+    OP := OP - NB;
+    ECRIRE('LE carre du nombre est', NB);
+    ECRIRE();
 FIN.
