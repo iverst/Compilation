@@ -1,3 +1,5 @@
+import com.sun.org.apache.bcel.internal.generic.ANEWARRAY;
+
 import java.io.FileReader;
 import java.util.Scanner;
 
@@ -5,7 +7,7 @@ public class Compilateur {
     public static final int LONG_MAX_IDENT = 20;
     public static final int LONG_MAX_CHAINE = 50;
     public static final int NB_MOTS_RESERVES = 7;
-    public static String SOURCE = "code/test.txt";
+    public static String SOURCE = "code/exemple";
     public static char CARLU;
     public static int NOMBRE;
     public static String CHAINE;
@@ -14,13 +16,20 @@ public class Compilateur {
     private String data;
 
     public void compiler(){
+        //Analyse Lexicale
         AnalyseurLexical analyseurLexical = new AnalyseurLexical(this);
         data = lireFichier(SOURCE);
         analyseurLexical.INITIALISER(data);
         analyseurLexical.ANALEX();
+
+        //Table Identificateur
         TableIdentificateur tableIdentificateur = new TableIdentificateur();
         tableIdentificateur.INSERER_TOKENS(analyseurLexical.TOKENS(), analyseurLexical.TOKENS_CAR());
         tableIdentificateur.AFFICHER_TABLE_IDENT();
+
+        //Analyse Syntaxique
+        AnalyseurSyntaxique analyseurSyntaxique = new AnalyseurSyntaxique(analyseurLexical.TOKENS(), analyseurLexical.TOKENS_CAR());
+        System.out.println(analyseurSyntaxique.EST_CORECT());
     }
 
     public String lireFichier(String filePath) {

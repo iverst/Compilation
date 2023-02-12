@@ -1,5 +1,7 @@
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
+import java.util.Arrays;
 
 
 public class Test {
@@ -10,23 +12,67 @@ public class Test {
         //testTools();
         //testMotReservé();
         //testTableIdentificateur();
-        testSymboles();
+        //testSymboles();
+        testLL1();
     }
 
-    public static void testSymboles() {
-        Symboles symboles = new Symboles(T_UNILEX.DEUXPTS);
-        Symboles symboles2 = new Symboles(T_UNILEX.MOTCLE, "DEBUT");
-        Symboles symboles3 = new Symboles(SymbolesNonTerminaux.AFFECTATION);
+    public static void testLL1() {
+        //AFFECTATION
+        //T_UNILEX[] TOKEN = {T_UNILEX.IDENT, T_UNILEX.AFF, null};
+        //OP_BIN
+        //T_UNILEX[] TOKEN = {T_UNILEX.DIVI};
+        //LECTURE
+        //T_UNILEX[] TOKEN = {T_UNILEX.MOTCLE, T_UNILEX.PAROUV, T_UNILEX.IDENT, T_UNILEX.VIRG, T_UNILEX.IDENT, T_UNILEX.PARFER};
+        //String[]  CHAINE = {"LIRE"};
+        //ECRITURE
+        //T_UNILEX[] TOKEN = {T_UNILEX.MOTCLE, T_UNILEX.PAROUV, T_UNILEX.CH, T_UNILEX.VIRG, T_UNILEX.CH, T_UNILEX.VIRG, T_UNILEX.CH, T_UNILEX.PARFER};
+        // String[]  CHAINE = {"ECRIRE"};
+        //
+        //PROG
+        //T_UNILEX[] TOKEN = {T_UNILEX.MOTCLE, T_UNILEX.IDENT, T_UNILEX.PTVIRG, T_UNILEX.POINT};
+        //String[]  CHAINE = {"PROGRAMME", null, null, null};
 
-        System.out.println(symboles.isEqual(T_UNILEX.DEUXPTS,"n"));
-        System.out.println(symboles2.isEqual(T_UNILEX.MOTCLE,"n"));
-        System.out.println(symboles2.isEqual(T_UNILEX.MOTCLE,"DEBUT"));
+        //DECL_VAR
+        //T_UNILEX[] TOKEN = {T_UNILEX.MOTCLE, T_UNILEX.IDENT, T_UNILEX.VIRG, T_UNILEX.IDENT,  T_UNILEX.PTVIRG};
+        //String[]  CHAINE = {"VAR"};
 
-        System.out.println(symboles3.isEqual(T_UNILEX.IDENT,"n"));
-        System.out.println("Test terminalité :");
-        System.out.println(symboles3.isTerminal());
-        System.out.println(symboles2.isTerminal());
-        System.out.println(symboles.isTerminal());
+        //DECL_CONST
+        //T_UNILEX[] TOKEN = {T_UNILEX.MOTCLE, T_UNILEX.IDENT, T_UNILEX.EG, T_UNILEX.ENT, T_UNILEX.VIRG,  T_UNILEX.IDENT, T_UNILEX.EG, T_UNILEX.ENT, T_UNILEX.PTVIRG};
+        //String[]  CHAINE = {"CONST"};
+
+        //BLOC
+        //T_UNILEX[] TOKEN = {T_UNILEX.MOTCLE,  T_UNILEX.MOTCLE};
+        //String[]  CHAINE = {"DEBUT", "", "FIN"};
+        //ECR_EXP
+        //T_UNILEX[] TOKEN = {T_UNILEX.ENT};
+        //String[]  CHAINE = {"DEBUT", "", "FIN"};
+
+        //EXP difficile à tester
+        //T_UNILEX[] TOKEN = {T_UNILEX.ENT};
+        //String[]  CHAINE = {"DEBUT", "", "FIN"};
+
+        //TERME
+        //T_UNILEX[] TOKEN = {T_UNILEX.ENT};
+        //String[]  CHAINE = {"DEBUT", "", "FIN"};
+
+        //OP_BIN
+        //T_UNILEX[] TOKEN = {T_UNILEX.ENT };
+        //String[]  CHAINE = {"DEBUT", "", "FIN"};
+
+
+        //test affectation
+
+        T_UNILEX[] TOKEN = {T_UNILEX.MOTCLE,T_UNILEX.IDENT, T_UNILEX.AFF, T_UNILEX.IDENT, T_UNILEX.MOTCLE };
+        String[]  CHAINE = {"DEBUT", "","", "", "FIN"};
+        LL1 ll1 = new LL1(TOKEN, CHAINE);
+        try {
+
+            System.out.println(ll1.BLOC());
+        }
+        catch (Exception e) {
+            e.printStackTrace();
+        }
+        //System.out.println(ll1.TEST());
     }
 
     public static void testTableIdentificateur() {
@@ -80,22 +126,5 @@ public class Test {
         System.out.println(erreur.afficherErreur());
     }
 
-    public static void testLangage() {
-
-        Transition[] transitions = {new Transition(0, new char[]{'a'},1, false),
-                new Transition(1, new char[]{'b'},1, true),
-                //new Transition(1, new char[]{'c'},2)
-
-        };
-        Langage l = new Langage(0, new int[]{1}, transitions);
-        /*
-        System.out.println(l.parcourir('a'));
-        System.out.println(l.parcourir('b'));
-        System.out.println(l.estAccepte());
-
-         */
-        System.out.println(l.reconnaitMot("bbbbbb"));
-        //System.out.println(l.reconnaitMot("aaaabc"));
-    }
 }
 
