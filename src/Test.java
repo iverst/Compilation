@@ -37,8 +37,8 @@ public class Test {
         //String[]  CHAINE = {"VAR"};
 
         //DECL_CONST
-        //T_UNILEX[] TOKEN = {T_UNILEX.MOTCLE, T_UNILEX.IDENT, T_UNILEX.EG, T_UNILEX.ENT, T_UNILEX.VIRG,  T_UNILEX.IDENT, T_UNILEX.EG, T_UNILEX.ENT, T_UNILEX.PTVIRG};
-        //String[]  CHAINE = {"CONST"};
+        T_UNILEX[] TOKEN = {T_UNILEX.MOTCLE, T_UNILEX.IDENT, T_UNILEX.EG, T_UNILEX.CH, T_UNILEX.VIRG, T_UNILEX.PTVIRG};
+        String[]  CHAINE = {"CONST"};
 
         //BLOC
         //T_UNILEX[] TOKEN = {T_UNILEX.MOTCLE,  T_UNILEX.MOTCLE};
@@ -62,12 +62,12 @@ public class Test {
 
         //test affectation
 
-        T_UNILEX[] TOKEN = {T_UNILEX.MOTCLE,T_UNILEX.IDENT, T_UNILEX.AFF, T_UNILEX.IDENT, T_UNILEX.MOTCLE };
-        String[]  CHAINE = {"DEBUT", "","", "", "FIN"};
+        //T_UNILEX[] TOKEN = {T_UNILEX.MOTCLE,T_UNILEX.IDENT, T_UNILEX.AFF, T_UNILEX.IDENT, T_UNILEX.MOTCLE };
+        //String[]  CHAINE = {"DEBUT", "","", "", "FIN"};
         LL1 ll1 = new LL1(TOKEN, CHAINE);
         try {
 
-            System.out.println(ll1.BLOC());
+            System.out.println(ll1.DECL_CONST());
         }
         catch (Exception e) {
             e.printStackTrace();

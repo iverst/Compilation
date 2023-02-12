@@ -132,6 +132,7 @@ class LL1 {
 
                     if (UNILEX == T_UNILEX.ENT || UNILEX == T_UNILEX.CH) {
                         UNILEX = ANALEX();
+
                         do {
                             if (UNILEX == T_UNILEX.VIRG) {
                                 UNILEX = ANALEX();
@@ -164,6 +165,7 @@ class LL1 {
                         }
                         while (! fin);
                         if (UNILEX == T_UNILEX.PTVIRG) {
+                            UNILEX = ANALEX();
                             return true;
                         }
                         else {
