@@ -37,12 +37,7 @@ class LL1 {
 
     public boolean EST_CORRECT() {
         try {
-            if( PROG() && index + 1 == TOKENS.length) {
-                return true;
-            }
-            else {
-                return false;
-            }
+            return PROG();
         }
         catch (Exception e) {
             return false;

@@ -1,7 +1,7 @@
 public class Erreur {
     private int numErreur = -1;
     private String descriptionErreur;
-    private static boolean afficher = false;
+    private static boolean afficher = true;
 
     public Erreur(int numErreur, String descriptionErreur) {
         this.numErreur = numErreur;

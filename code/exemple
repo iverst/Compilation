@@ -1,11 +1,6 @@
 PROGRAMME exemple;
-CONST CB = 3, AB = 'UUUUUUUUUUU', a = 'nice';
-VAR NB, OP;
+CONST aBBBZ = 'chaine';
+VAR NB;
 DEBUT
-    ECRIRE('entrez un nombre entier');
-    LIRE(NB);
-    NB := NB * NB;
-    OP := OP - NB;
-    ECRIRE('LE carre du nombre est', NB);
-    ECRIRE();
+NB := NB * nb;
 FIN.

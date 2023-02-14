@@ -1,5 +1,3 @@
-import com.sun.org.apache.bcel.internal.generic.ANEWARRAY;
-
 import java.io.FileReader;
 import java.util.Scanner;
 
@@ -23,9 +21,10 @@ public class Compilateur {
         analyseurLexical.ANALEX();
 
         //Table Identificateur
-        TableIdentificateur tableIdentificateur = new TableIdentificateur();
-        tableIdentificateur.INSERER_TOKENS(analyseurLexical.TOKENS(), analyseurLexical.TOKENS_CAR());
-        tableIdentificateur.AFFICHER_TABLE_IDENT();
+        TableIdentificateurs tableIdentificateurs2 = new TableIdentificateurs(analyseurLexical.TOKENS(), analyseurLexical.TOKENS_CAR());
+        tableIdentificateurs2.INSERER_TOKENS();
+        tableIdentificateurs2.AFFICHE_TABLE_IDENT();
+
 
         //Analyse Syntaxique
         AnalyseurSyntaxique analyseurSyntaxique = new AnalyseurSyntaxique(analyseurLexical.TOKENS(), analyseurLexical.TOKENS_CAR());
