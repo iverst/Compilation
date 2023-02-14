@@ -49,6 +49,8 @@ public class TableIdentificateurs {
     }
 
     public void AFFICHE_TABLE_IDENT() {
+        System.out.println();
+        System.out.println();
         System.out.println("TABLE DES IDENTIFICATEURS :");
 
 
@@ -56,7 +58,8 @@ public class TableIdentificateurs {
             System.out.println(o);
         }
 
-
+        System.out.println();
+        System.out.println();
     }
 }
 

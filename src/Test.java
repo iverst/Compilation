@@ -1,7 +1,5 @@
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
-import java.util.Arrays;
 
 
 public class Test {
@@ -75,48 +73,7 @@ public class Test {
         //System.out.println(ll1.TEST());
     }
 
-    public static void testTableIdentificateur() {
-        TableIdentificateur tableIdentificateur = new TableIdentificateur();
 
-        /*
-        tableIdentificateur.INSERER("c1", "CONST", null);
-
-        tableIdentificateur.INSERER("c2", "CONST", null);
-        tableIdentificateur.INSERER("v1", "VAR", null);
-        tableIdentificateur.INSERER("c2", "CONST", null);
-
-
-         */
-        ArrayList<T_UNILEX> TOKENS = new ArrayList<>();
-        ArrayList<String> TOKENS_CAR = new ArrayList<>();
-        TOKENS.add(T_UNILEX.MOTCLE);
-        TOKENS.add(T_UNILEX.IDENT);
-        TOKENS.add(T_UNILEX.MOTCLE);
-        TOKENS.add(T_UNILEX.IDENT);
-        TOKENS.add(T_UNILEX.MOTCLE);
-        TOKENS.add(T_UNILEX.IDENT);
-        TOKENS_CAR.add("CONST");
-        TOKENS_CAR.add("test1");
-
-        TOKENS_CAR.add("VAR");
-        TOKENS_CAR.add("test2");
-        TOKENS_CAR.add("VARI");
-        TOKENS_CAR.add("test3");
-
-        tableIdentificateur.INSERER_TOKENS(TOKENS, TOKENS_CAR);
-        tableIdentificateur.AFFICHER_TABLE_IDENT();
-
-        /*
-        int i = 0;
-        while (true) {
-            i++;
-            tableIdentificateur.INSERER("v" + String.valueOf(i), "VAR");
-        }
-
-         */
-
-
-    }
 
     public static void testTools() {
         char[] c = new char[]{'a', 'b', 'c'};

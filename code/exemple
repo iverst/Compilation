@@ -1,6 +1,8 @@
-PROGRAMME exemple;
-CONST aBBBZ = 'chaine';
-VAR NB;
+PROGRAMME unProgramme;
+CONST uneConstante = 'chaine';
+VAR uneVar;
 DEBUT
+{un commentaire}
+x = 1200000;
 NB := NB * nb;
 FIN.
