@@ -41,6 +41,7 @@ public class Compilateur {
         VirtualMachine virtualMachine = new VirtualMachine((T_UNILEX[])analyseurLexical.TOKENS().toArray(new T_UNILEX[0]),
                 (String[])analyseurLexical.TOKENS_CAR().toArray(new String[0]),
                 SOURCE, analyseurSyntaxique);
+        virtualMachine.CREER_FICHIER_CODE();
         virtualMachine.INTERPRETER();
     }
 

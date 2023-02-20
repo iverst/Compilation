@@ -21,7 +21,6 @@ public class VirtualMachine {
         this.SOURCE = codeSourceChemin;
         tableIdent = new TableIdent(TOKENS, TOKENS_CHAR);
         fichierCode = anaSyntaxique.getCode();
-        CREER_FICHIER_CODE();
     }
 
     public void CREER_FICHIER_CODE() {
