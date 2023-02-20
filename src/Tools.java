@@ -25,4 +25,12 @@ public class Tools {
         }
         return false;
     }
+
+    public String decouperChaine(String chaine) {
+        String chaineDecoupe = "";
+        for (char c : chaine.toCharArray()) {
+            chaineDecoupe =  chaineDecoupe + "'" + c + "'";
+        }
+        return chaineDecoupe;
+    }
 }

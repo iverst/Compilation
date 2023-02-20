@@ -3,6 +3,7 @@ CONST uneConstante = 'chaine';
 VAR uneVar;
 DEBUT
 {un commentaire}
-x = 1200000;
+ECRIRE('yes');
+uneVar := 1200;
 NB := NB * nb;
 FIN.

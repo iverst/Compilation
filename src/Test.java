@@ -1,5 +1,6 @@
 
 import java.util.ArrayList;
+import java.util.LinkedList;
 
 
 public class Test {
@@ -11,7 +12,9 @@ public class Test {
         //testMotReservé();
         //testTableIdentificateur();
         //testSymboles();
-        testLL1();
+        //testLL1();
+        //testPile();
+        testArrayList();
     }
 
     public static void testLL1() {
@@ -62,15 +65,17 @@ public class Test {
 
         //T_UNILEX[] TOKEN = {T_UNILEX.MOTCLE,T_UNILEX.IDENT, T_UNILEX.AFF, T_UNILEX.IDENT, T_UNILEX.MOTCLE };
         //String[]  CHAINE = {"DEBUT", "","", "", "FIN"};
-        LL1 ll1 = new LL1(TOKEN, CHAINE);
+        /*LL1 ll1 = new LL1(TOKEN, CHAINE);
         try {
 
-            System.out.println(ll1.DECL_CONST());
+            System.out.println(/ll1.DECL_CONST());
         }
         catch (Exception e) {
             e.printStackTrace();
         }
         //System.out.println(ll1.TEST());
+
+         */
     }
 
 
@@ -86,5 +91,32 @@ public class Test {
         System.out.println(erreur.afficherErreur());
     }
 
+
+    public static void testPile() {
+        LinkedList<String> list = new LinkedList<>();
+
+        list.add("red");
+        list.add("yellow");
+        list.add("green");
+
+        System.out.println(list);
+        System.out.println(list.getLast());
+        System.out.println(list.pollLast());
+        System.out.println(list.getLast());
+        System.out.println(list);
+
+    }
+
+    public static void testArrayList() {
+        ArrayList<String> test = new ArrayList<>();
+        test.add("1");
+        test.add("2 4 5");
+        test.set(0,"3");
+        System.out.println(test);
+        String[] array = test.get(1).split(" ");
+        for (String s : array) {
+            System.out.println(s);
+        }
+    }
 }
 

@@ -5,7 +5,7 @@ public class Compilateur {
     public static final int LONG_MAX_IDENT = 20;
     public static final int LONG_MAX_CHAINE = 50;
     public static final int NB_MOTS_RESERVES = 7;
-    public static String SOURCE = "code/exemple";
+    public static String SOURCE = "code/exemple2";
     public static char CARLU;
     public static int NOMBRE;
     public static String CHAINE;
@@ -34,6 +34,13 @@ public class Compilateur {
         else {
             System.out.println("Programme Syntaxiquement INCORRECT !");
         }
+
+
+
+        //Virtual Machine
+        VirtualMachine virtualMachine = new VirtualMachine((T_UNILEX[])analyseurLexical.TOKENS().toArray(new T_UNILEX[0]),
+                (String[])analyseurLexical.TOKENS_CAR().toArray(new String[0]),
+                SOURCE, analyseurSyntaxique);
     }
 
     public String lireFichier(String filePath) {

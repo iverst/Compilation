@@ -1,0 +1,9 @@
+programme exemple2;
+var nb;
+debut
+    ecrire('Entrez un nombre entier :');
+    lire(nb);
+    nb:=2*nb;
+    ecrire();
+    ecrire('le double de ce nombre est', nb);
+fin.

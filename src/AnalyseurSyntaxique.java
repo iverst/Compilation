@@ -1,12 +1,10 @@
-
-import sun.dc.pr.PRError;
-
-import javax.print.DocFlavor;
 import java.util.ArrayList;
+import java.util.LinkedList;
 
 public class AnalyseurSyntaxique {
     private T_UNILEX[] TOKENS;
     private String[] TOKENS_CHAR;
+    private ArrayList<String>  code = new ArrayList<>();
 
     public AnalyseurSyntaxique(ArrayList<T_UNILEX> TOKENS, ArrayList<String> TOKENS_CHAR) {
         this.TOKENS = (T_UNILEX[]) TOKENS.toArray(new T_UNILEX[0]);
@@ -14,10 +12,14 @@ public class AnalyseurSyntaxique {
     }
 
     public boolean EST_CORECT() {
-        LL1 ll1 = new LL1(TOKENS, TOKENS_CHAR);
-        return ll1.EST_CORRECT();
+        LL1 ll1 = new LL1(TOKENS, TOKENS_CHAR, code);
+        boolean correct = ll1.EST_CORRECT();
+        return correct;
     }
 
+    public ArrayList<String> getCode() {
+        return code;
+    }
 }
 
 class LL1 {
@@ -25,11 +27,14 @@ class LL1 {
     private String[]  TOKENSCHAR;
     private int index;
     private T_UNILEX UNILEX;
+    private ArrayList<String> code;
+    private LinkedList<String> operatins = new LinkedList<>();
 
-    public LL1(T_UNILEX[] TOKENS, String[] TOKENSCHAR) {
+    public LL1(T_UNILEX[] TOKENS, String[] TOKENSCHAR, ArrayList<String> code) {
         this.TOKENS = TOKENS;
         this.TOKENSCHAR = TOKENSCHAR;
         UNILEX = TOKENS[0];
+        this.code = code;
     }
 
     public LL1() {
@@ -293,10 +298,16 @@ class LL1 {
     //correct
     public boolean AFFECTATION() throws Exception {
         if (UNILEX == T_UNILEX.IDENT) {
+            code.add("EMPI @" + CHAINE());
             UNILEX = ANALEX();
             if (UNILEX == T_UNILEX.AFF) {
                 UNILEX = ANALEX();
-                return EXP();
+                boolean validite = EXP();
+                while (operatins.size() != 0) {
+                    code.add(operatins.pollLast());
+                }
+                code.add("AFFE");
+                return validite;
             }
             else {
                 new Erreur("Erreur syntaxique dans une instruction d'affectation: := attendu").afficherErreur();
@@ -318,6 +329,8 @@ class LL1 {
             if(UNILEX == T_UNILEX.PAROUV) {
                 UNILEX = ANALEX();
                 if(UNILEX == T_UNILEX.IDENT) {
+                    code.add("EMPI @" + CHAINE());
+                    code.add("LIRE");
                     UNILEX = ANALEX();
                     fin = false;
                     erreur = false;
@@ -325,6 +338,8 @@ class LL1 {
                         if(UNILEX == T_UNILEX.VIRG) {
                             UNILEX = ANALEX();
                             if (UNILEX == T_UNILEX.IDENT) {
+                                code.add("EMPI @" + CHAINE());
+                                code.add("LIRE");
                                 UNILEX = ANALEX();
                             }
                             else {
@@ -375,8 +390,16 @@ class LL1 {
             UNILEX = ANALEX();
 
             if (UNILEX == T_UNILEX.PAROUV) {
+                //cas ECRIRE();
+                //généré saut de ligne
+                if (TOKENS[index + 1] == T_UNILEX.PARFER) {
+                    code.add("ECRL");
+                }
+
+
                 UNILEX = ANALEX();
                 erreur = false;
+
                 if (ECR_EXP()) {
                     fin = false;
                     do {
@@ -419,13 +442,19 @@ class LL1 {
 
     public boolean ECR_EXP() throws Exception {
         if (UNILEX == T_UNILEX.CH) {
+            code.add("ECRC " + Tools.getIntance().decouperChaine(CHAINE()) + "FINC");
             UNILEX = ANALEX();
             return true;
         }
         else if (EXP()) {
+            while (operatins.size() != 0) {
+                code.add(operatins.pollLast());
+            }
+            code.add("ECRE");
             return true;
         }
         else {
+
             new Erreur("Erreur syntaxique dans l'instruction ECR_EXP: CH attendu ou EXP invalide").afficherErreur();
             return false;
         }
@@ -442,6 +471,7 @@ class LL1 {
                 }
             }
             else if (SUITE_TERME()) {
+
                 return true;
             }
             else {
@@ -455,10 +485,13 @@ class LL1 {
 
     public boolean TERME() throws Exception {
         if (UNILEX == T_UNILEX.ENT) {
+            code.add("EMPI " + CHAINE());
             UNILEX = ANALEX();
             return true;
         }
         else if(UNILEX == T_UNILEX.IDENT) {
+            code.add("EMPI @" + CHAINE());
+            code.add("CONT");
             UNILEX = ANALEX();
             return true;
         }
@@ -480,7 +513,9 @@ class LL1 {
         }
         else if(UNILEX == T_UNILEX.MOINS) {
             UNILEX = ANALEX();
-            return TERME();
+            boolean retour = TERME();
+            code.add("MOINS");
+            return retour;
         }
         else {
             new Erreur("Erreur syntaxique dans l'instruction TERME: Instruction invalide").afficherErreur();
@@ -490,7 +525,25 @@ class LL1 {
 
     public boolean OP_BIN() throws Exception {
 
+
+
         if (UNILEX == T_UNILEX.PLUS || UNILEX == T_UNILEX.MOINS || UNILEX == T_UNILEX.MULT || UNILEX == T_UNILEX.DIVI) {
+            //ajout operations au code
+            switch (UNILEX) {
+                case PLUS:
+                    operatins.add("ADDI");
+                    break;
+                case MOINS:
+                    operatins.add("SOUS");
+                    break;
+                case MULT:
+                    operatins.add("MULT");
+                    break;
+                case DIVI:
+                    operatins.add("DIVI");
+                    break;
+
+            }
             UNILEX = ANALEX();
             return true;
 
