@@ -1,9 +1,11 @@
 programme exemple2;
+{const uneconst = 'yes', la=3;}
+const double = 2;
 var nb;
 debut
     ecrire('Entrez un nombre entier :');
     lire(nb);
-    nb:=2*nb;
+    nb:=double*nb;
     ecrire();
     ecrire('le double de ce nombre est', nb);
 fin.

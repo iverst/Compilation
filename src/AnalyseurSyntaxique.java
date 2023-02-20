@@ -442,7 +442,7 @@ class LL1 {
 
     public boolean ECR_EXP() throws Exception {
         if (UNILEX == T_UNILEX.CH) {
-            code.add("ECRC " + Tools.getIntance().decouperChaine(CHAINE()) + "FINC");
+            code.add("ECRC " + Tools.getIntance().decouperChaine(CHAINE()) + " FINC");
             UNILEX = ANALEX();
             return true;
         }
