@@ -1,17 +1,17 @@
-2 mot(s) réservé(s) pour les variables globales
+3 mot(s) réservé(s) pour les variables globales
 ECRC 'E''n''t''r''e''z'' ''u''n'' ''n''o''m''b''r''e'' ''e''n''t''i''e''r'' '':' FINC
-EMPI 1
+EMPI 2
 LIRE
-EMPI 1
+EMPI 2
 EMPI 0
 CONT
-EMPI 1
+EMPI 2
 CONT
 MULT
 AFFE
 ECRL
 ECRC 'l''e'' ''d''o''u''b''l''e'' ''d''e'' ''c''e'' ''n''o''m''b''r''e'' ''e''s''t' FINC
-EMPI 1
+EMPI 2
 CONT
 ECRE
 STOP

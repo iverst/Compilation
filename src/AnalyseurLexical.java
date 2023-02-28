@@ -23,6 +23,9 @@ public class AnalyseurLexical {
     private ArrayList<T_UNILEX> unitesLexicales = new ArrayList<>();
     //caractères correspondant
     private ArrayList<String> unitesLexicalesCaracteres = new ArrayList<>();
+    //Compteur ligne de code actuel
+    private int ligne_code = 1;
+
 
     public AnalyseurLexical(Compilateur compilateur) {
         this.compilateur = compilateur;
@@ -72,6 +75,14 @@ public class AnalyseurLexical {
             }
             if (uniteLexicale != null) {
                 AFFICHER(uniteLexicale);
+                //gestion num ligne
+
+                if (uniteLexicale == T_UNILEX.PTVIRG ||(uniteLexicale == T_UNILEX.MOTCLE && "".equals(unitesLexicalesCaracteres.get(unitesLexicalesCaracteres.size() - 1))))
+                {
+                    ligne_code++;
+                }
+
+                Erreur.ajouterLigneCode(ligne_code);
             }
         }
         while (! FIN_DE_FICHIER());

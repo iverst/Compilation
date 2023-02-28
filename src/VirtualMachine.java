@@ -1,10 +1,7 @@
 import org.omg.CORBA.OBJ_ADAPTER;
 
 import java.io.*;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.LinkedList;
-import java.util.Scanner;
+import java.util.*;
 
 public class VirtualMachine {
     private T_UNILEX[] TOKENS;
@@ -27,7 +24,6 @@ public class VirtualMachine {
         fichierCode.add("STOP");
         ArrayList<String> nouveauFichierCode = new ArrayList<>();
         nouveauFichierCode.add(String.valueOf(tableIdent.nombreVariableGlobales()) + " mot(s) réservé(s) pour les variables globales");
-
         //changement nom variable en adresse
         for (String s : fichierCode) {
             String[] mots = s.split(" ");

@@ -1,6 +1,5 @@
 programme exemple2;
-{const uneconst = 'yes', la=3;}
-const double = 2;
+const double = 2, la = 'wesh';
 var nb;
 debut
     ecrire('Entrez un nombre entier :');

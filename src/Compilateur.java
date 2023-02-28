@@ -33,6 +33,7 @@ public class Compilateur {
         }
         else {
             System.out.println("Programme Syntaxiquement INCORRECT !");
+            return;
         }
 
 

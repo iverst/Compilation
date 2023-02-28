@@ -1,7 +1,10 @@
+import java.util.ArrayList;
+
 public class Erreur {
     private int numErreur = -1;
     private String descriptionErreur;
     private static boolean afficher = true;
+    private static ArrayList<Integer> numero_ligne_code = new ArrayList<>();
 
     public Erreur(int numErreur, String descriptionErreur) {
         this.numErreur = numErreur;
@@ -47,4 +50,16 @@ public class Erreur {
         }
     }
 
+    public String afficherErreurLigne(int index) {
+        return "Erreur n°" + numErreur + " à la ligne " + numero_ligne_code.get(index) + " , message '" + descriptionErreur + "'";
+
+    }
+
+    public static void ajouterLigneCode(int i) {
+        numero_ligne_code.add(i);
+    }
+
+    public static int getLigneCode(int index) {
+        return numero_ligne_code.get(index);
+    }
 }
