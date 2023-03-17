@@ -77,12 +77,10 @@ public class AnalyseurLexical {
                 AFFICHER(uniteLexicale);
                 //gestion num ligne
 
-                if (uniteLexicale == T_UNILEX.PTVIRG ||(uniteLexicale == T_UNILEX.MOTCLE && "".equals(unitesLexicalesCaracteres.get(unitesLexicalesCaracteres.size() - 1))))
+                if (uniteLexicale == T_UNILEX.PTVIRG ||(uniteLexicale == T_UNILEX.MOTCLE && "DEBUT".equals(unitesLexicalesCaracteres.get(unitesLexicalesCaracteres.size() - 1))))
                 {
                     ligne_code++;
                 }
-
-                Erreur.ajouterLigneCode(ligne_code);
             }
         }
         while (! FIN_DE_FICHIER());
@@ -172,7 +170,7 @@ public class AnalyseurLexical {
             return true;
         }
         else {
-            System.out.println(new Erreur(1, "fin de fichier atteinte").afficherErreur());
+            System.out.println("ligne : " + ligne_code + "  " + new Erreur(1, "fin de fichier atteinte").afficherErreur());
             return false;
         }
     }
@@ -182,7 +180,7 @@ public class AnalyseurLexical {
             return false;
         }
         else {
-            System.out.println(new Erreur(1, "fin de fichier atteinte").afficherErreur());
+            System.out.println("ligne : " + ligne_code + "  " + new Erreur(1, "fin de fichier atteinte").afficherErreur());
             return true;
         }
     }
@@ -228,7 +226,7 @@ public class AnalyseurLexical {
 
         if (MAX_INT < nombre) {
             Erreur erreur = new Erreur(2, "Int supérieur à la valeur maximale de 32767");
-            erreur.afficherErreur();
+            System.out.println("ligne : " + ligne_code + "  "+ erreur.afficherErreur());
             try {
                 erreur.creerException();
             }
@@ -259,7 +257,7 @@ public class AnalyseurLexical {
         if (chaine.length() > Compilateur.LONG_MAX_CHAINE) {
             try {
                 Erreur erreur = new Erreur(20, "Chaine de caractère trop longe !");
-                erreur.creerException();
+                System.out.println("ligne : " + ligne_code + erreur.afficherErreur());
             }
             catch (Exception e) {
                 e.printStackTrace();
